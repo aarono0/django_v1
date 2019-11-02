@@ -21,7 +21,7 @@ def article_content(request):
     return_str = 'title: %s, brief_content: %s, \
         content: %s, article_id: %s, publish_date: %s' % (title,
         brief_content, content, article_id, publish_date)
-    
+
     return HttpResponse(return_str)
 
 def get_index_page(request):
@@ -31,7 +31,7 @@ def get_index_page(request):
     else:
         page = 1
     print('page param: ', page)
-    
+
     all_article = Article.objects.all()
     top5_article_list = Article.objects.order_by('-publish_date')[:5]
     paginator = Paginator(all_article, 3)
